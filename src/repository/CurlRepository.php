@@ -25,7 +25,7 @@ class CurlRepository extends AbstractRepository
             'phone' => $order->getPhone(),
             'tracking' => $order->getTrack(),
             'order_id' => $order->getOrderId(),
-            'e-mail' => $order->getEmail(),
+            'email' => $order->getEmail(),
             'firstname' => $order->getFirstname(),
             'lastname' => $order->getLastname(),
             'tags' => $order->getTags(),
@@ -33,6 +33,7 @@ class CurlRepository extends AbstractRepository
             'additional2' => $order->getAdditional1(),
             'additional3' => $order->getAdditional3(),
             'summa' => $order->getSumma(),
+            'cms' => $order->getCms()
         ];
 
 
@@ -87,13 +88,14 @@ class CurlRepository extends AbstractRepository
             ->that($postData['phone'], 'phone')->notEmpty()->regex('/(\+7|8)[0-9]{10}/ui')
             ->that($postData['tracking'], 'tracking')->notEmpty()->regex('/[a-zA-Z0-9]{13,14}/ui')
             ->that($postData['order_id'], 'order_id')->nullOr()->string()
-            ->that($postData['e-mail'], 'e-mail')->nullOr()->email()
+            ->that($postData['email'], 'email')->nullOr()->email()
             ->that($postData['firstname'], 'firstname')->nullOr()->string()
             ->that($postData['lastname'], 'lastname')->nullOr()->string()
             ->that($postData['tags'], 'tags')->nullOr()->string()
             ->that($postData['additional1'], 'additional1')->nullOr()->betweenLength(0, 255)->string()
             ->that($postData['additional2'], 'additional2')->nullOr()->betweenLength(0, 255)->string()
             ->that($postData['additional3'], 'additional3')->nullOr()->betweenLength(0, 255)->string()
+            ->that($postData['cms'], 'cms')->nullOr()->betweenLength(0, 255)->string()
             ->that($postData['summa'], 'summa')->nullOr()->float()
             ->verifyNow();
     }

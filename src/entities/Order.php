@@ -52,6 +52,11 @@ class Order
     protected $tags;
 
     /**
+     * @var string  cms
+     */
+    protected $cms;
+    
+    /**
      * @var string Дополнительное поле 1, до 255 символов
      */
     protected $additional1;
@@ -79,8 +84,9 @@ class Order
      * @param string $additional1
      * @param string $additional2
      * @param string $additional3
+     * @param string $cms
      */
-    public function __construct($phone, $track, $order_id = null, $email = null, $firstname = null, $lastname = null, $summa = null, $tags = null, $additional1 = null, $additional2 = null, $additional3 = null)
+    public function __construct($phone, $track, $order_id = null, $email = null, $firstname = null, $lastname = null, $summa = null, $tags = null, $additional1 = null, $additional2 = null, $additional3 = null, $cms = null)
     {
         $this->phone = $phone;
         $this->track = $track;
@@ -93,6 +99,7 @@ class Order
         $this->additional1 = $additional1;
         $this->additional2 = $additional2;
         $this->additional3 = $additional3;
+        $this->cms = $cms;
     }
 
     /**
@@ -183,6 +190,14 @@ class Order
     public function getAdditional3()
     {
         return $this->additional3;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCms()
+    {
+        return $this->cms;
     }
 
     
